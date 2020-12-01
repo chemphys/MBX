@@ -1103,10 +1103,32 @@ void System::SetUpFromJson(nlohmann::json j) {
 
 nlohmann::json System::GetJsonConfig() { return mbx_j_; }
 
+
+// This is the getter method which gets the json
+nlohmann::json System::GetJsonConfigMolecule(){return molecule_j_;}
+
+
+
 void System::SetUpFromJson(std::string json_text) {
     nlohmann::json j = nlohmann::json::parse(json_text);
     SetUpFromJson(j);
 }
+
+
+
+/*
+MODIFIED at NOV 08
+This is the json object to save information from the molecule
+*/
+void System::SetUpFromJsonMolecule(char *json_file_path){
+    // setup the file path
+    std::ifstream json_file(json_file_path);
+
+    json_file >> molecule_j_;
+}
+
+
+
 
 void System::SetUpFromJson(char *json_file) {
     /* Template example for mbx.json

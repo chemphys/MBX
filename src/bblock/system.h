@@ -588,6 +588,14 @@ class System {
      **/
     void SetUpFromJson(std::string json_text);
 
+
+     /*
+     Added at NOV 07
+     Edited at NOV 20
+     This is the function to save information from the molecule, reads information from json
+     */
+     void SetUpFromJsonMolecule(char *json_file_path = 0);
+
     /**
      * Sets up all the parameters that are specified in a json object
      * @param[in] j Json object with the system specifications
@@ -599,6 +607,13 @@ class System {
      * @return Json object in the system
      */
     nlohmann::json GetJsonConfig();
+
+
+     /**
+     * getter method in the system class
+     * @return Json object in the system, this json object stores the information about molecule
+     */
+     nlohmann::json GetJsonConfigMolecule();
 
     /**
      * Sets the two-body cutoff for dispersion and polynomials.
@@ -1344,6 +1359,19 @@ to be the same.
      * Json configuration object
      */
     nlohmann::json mbx_j_;
+
+
+     /*
+     Added at NOV 05
+     Edited at NOV 23, 
+     this json object stores teh molecule information
+     */
+     nlohmann::json molecule_j_;
+
+
+
+
+
 
     /**
      * Set to true when driver has intialized MPI

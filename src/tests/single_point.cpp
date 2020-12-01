@@ -51,6 +51,27 @@ int main(int argc, char** argv) {
         systems[0].SetUpFromJson();
     }
 
+    // reading JSON
+    if (argc > 3) {
+        systems[0].SetUpFromJsonMolecule(argv[3]);
+
+        // do the print to test the loading correctly
+
+        nlohmann::json j = systems[0].GetJsonConfigMolecule();
+
+        std::cout<< "I am reading successfully";
+
+
+        // try to print it out!
+        std::cout << "----------------------------------------------" << std::endl;
+        for (std::string s : j["molecule"]) {
+            for (std::string x : j["characters"]) {
+                std::cout << s << " has property of " << x << " with value of " << j[s][x] << std::endl;
+            }
+            std::cout << "----------------------------------------------" << std::endl;
+        }
+    }
+    
     double en = systems[0].Energy(true);
 
     std::cout << "Energy= " << en << std::endl;
