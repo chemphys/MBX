@@ -88,6 +88,18 @@ namespace bblock {
  * It contains the calls to the enegy functions
  * More stuff to come.
  */
+struct Molecule
+{   
+    std::string moleclue_name;
+    size_t sites;
+    size_t nat;
+    std::set<std::pair<size_t, size_t>> exc12;
+    std::set<std::pair<size_t, size_t>> exc13;
+    std::set<std::pair<size_t, size_t>> exc14;
+    std::vector<double> polfact;
+    std::vector<double> pol;
+    std::vector<double> c6_lr;
+};
 
 class System {
    public:
@@ -177,17 +189,6 @@ class System {
     //     * Returns the charge derivatives for the whole system
     //     */
     //    std::vector<double> GetChargeDerivatives();
-
-    /**
-     * @brief Fills out the monomer indexes and ids for each atom
-     *
-     * @param[out] original_atom_index_to_original_mon_index Contains, for atom i, the index of the monomer to which it
-     * belongs
-     * @param[out] original_atom_index_to_original_mon_id Contains, for atom i, the id of the monomer to which it
-     * belongs
-     */
-    void GetAtomMonIndex(std::vector<size_t> &original_atom_index_to_original_mon_index,
-                         std::vector<std::string> &original_atom_index_to_original_mon_id);
 
     /**
      * Gets the position of the first site of monomer n in the atoms vector
@@ -588,6 +589,15 @@ class System {
      **/
     void SetUpFromJson(std::string json_text);
 
+
+
+     /*
+     Added at NOV 07
+     Edited at NOV 20
+     This is the function to save information from the molecule, reads information from json
+     */
+     void SetUpFromJsonMolecule(char *json_file_path = 0);
+     
     /**
      * Sets up all the parameters that are specified in a json object
      * @param[in] j Json object with the system specifications
@@ -599,6 +609,14 @@ class System {
      * @return Json object in the system
      */
     nlohmann::json GetJsonConfig();
+
+
+     /**
+     * Edited at Nov 20
+     * getter method in the system class
+     * @return Json object in the system, this json object stores the information about molecule
+     */
+     nlohmann::json GetJsonConfigMolecule();
 
     /**
      * Sets the two-body cutoff for dispersion and polynomials.
@@ -724,28 +742,6 @@ to be the same.
      * @param[in] true for periodic (condensed phase; use PME) / 0 for non-periodic (gas-phase; no PME)
      */
     void SetPeriodicity(bool periodic);
-
-    /**
-     * Get FFT grid from electrostatic pme solver
-     * @param[in] 0 for default box / 1 for PMElocal box
-     */
-    std::vector<int> GetFFTDimensionElectrostatics(int box_id = 0);
-
-    /**
-     * Get FFT grid from dispersion pme solver
-     * @param[in] 0 for default box / 1 for PMElocal box
-     */
-    std::vector<int> GetFFTDimensionDispersion(int box_id = 0);
-
-    /**
-     * Set FFT grid for electrostatic pme solver
-     */
-    void SetFFTDimensionElectrostatics(std::vector<int> grid);
-
-    /**
-     * Set FFT grid for dispersion pme solver
-     */
-    void SetFFTDimensionDispersion(std::vector<int> grid);
 
     /**
      * @param[in] connectivity_map A map with monomer id as values and
@@ -1342,8 +1338,25 @@ to be the same.
 
     /**
      * Json configuration object
+     * important
      */
     nlohmann::json mbx_j_;
+
+
+
+
+     
+     /*
+     Added at NOV 05
+     Edited at NOV 23, 
+     this json object stores teh molecule information
+     */
+     nlohmann::json molecule_j_;
+
+
+
+
+
 
     /**
      * Set to true when driver has intialized MPI
@@ -1374,12 +1387,6 @@ to be the same.
      */
     std::unordered_map<std::string, eff::Conn> connectivity_map_;
     // static std::unordered_map<std::string, eff::Conn> connectivity_map_;
-
-    /**
-     * Vectors that hold user-specified FFT grid dimensions
-     */
-    std::vector<int> grid_fftdim_elec_;
-    std::vector<int> grid_fftdim_disp_;
 };
 
 }  // namespace bblock
@@ -1387,3 +1394,5 @@ to be the same.
 ////////////////////////////////////////////////////////////////////////////////
 
 #endif  // CU_INCLUDE_BBLOCK_SYSTEM_H
+
+
