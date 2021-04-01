@@ -739,6 +739,28 @@ bool GetC6(std::string mon_id1, std::string mon_id2, size_t index1, size_t index
         // Fill in (in order) the C6 and d6 coefficients
         C6.push_back(1857.467);  // kcal/mol * A^(-6)  A--B
         d6.push_back(3.19908);   // A^(-1) A--B
+    } else if (mon_id1 == "h2o" and mon_id2 == "so4a") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(1);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(1);
+        types2.push_back(1);
+        types2.push_back(1);
+
+        nt2 = 2;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        C6.push_back(493.9465);  // kcal/mol * A^(-6)  A--C
+        C6.push_back(252.5366);  // kcal/mol * A^(-6)  A--D
+        C6.push_back(240.9586);  // kcal/mol * A^(-6)  B--C
+        C6.push_back(112.1187);  // kcal/mol * A^(-6)  B--D
+        d6.push_back(3.16561);   // A^(-1) A--C
+        d6.push_back(2.89365);   // A^(-1) A--D
+        d6.push_back(2.82847);   // A^(-1) B--C
+        d6.push_back(3.82455);   // A^(-1) B--D
         // =====>> END SECTION DISPERSION <<=====
     } else {
         out_C6 = 0.0;
