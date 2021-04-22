@@ -739,6 +739,58 @@ bool GetC6(std::string mon_id1, std::string mon_id2, size_t index1, size_t index
         // Fill in (in order) the C6 and d6 coefficients
         C6.push_back(1857.467);  // kcal/mol * A^(-6)  A--B
         d6.push_back(3.19908);   // A^(-1) A--B
+    } else if (mon_id1 == "h2po4a" and mon_id2 == "h2po4a") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(2);
+        types1.push_back(1);
+        types1.push_back(2);
+        types1.push_back(3);
+        types1.push_back(3);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(3);
+        types2.push_back(3);
+
+        nt2 = 4;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        C6.push_back(1565.7829);  // kcal/mol * A^(-6)  A--A
+        C6.push_back(466.7496);   // kcal/mol * A^(-6)  A--B
+        C6.push_back(260.508);    // kcal/mol * A^(-6)  A--C
+        C6.push_back(547.8993);   // kcal/mol * A^(-6)  A--D
+        C6.push_back(466.7496);   // kcal/mol * A^(-6)  A--B
+        C6.push_back(182.5171);   // kcal/mol * A^(-6)  B--B
+        C6.push_back(91.0002);    // kcal/mol * A^(-6)  B--C
+        C6.push_back(215.4204);   // kcal/mol * A^(-6)  B--D
+        C6.push_back(260.508);    // kcal/mol * A^(-6)  A--C
+        C6.push_back(91.0002);    // kcal/mol * A^(-6)  B--C
+        C6.push_back(47.6523);    // kcal/mol * A^(-6)  C--C
+        C6.push_back(107.1409);   // kcal/mol * A^(-6)  C--D
+        C6.push_back(547.8993);   // kcal/mol * A^(-6)  A--D
+        C6.push_back(215.4204);   // kcal/mol * A^(-6)  B--D
+        C6.push_back(107.1409);   // kcal/mol * A^(-6)  C--D
+        C6.push_back(254.2832);   // kcal/mol * A^(-6)  D--D
+        d6.push_back(3.47721);    // A^(-1) A--A
+        d6.push_back(3.14);       // A^(-1) A--B
+        d6.push_back(2.7408);     // A^(-1) A--C
+        d6.push_back(3.51808);    // A^(-1) A--D
+        d6.push_back(3.14);       // A^(-1) A--B
+        d6.push_back(3.97579);    // A^(-1) B--B
+        d6.push_back(3.90897);    // A^(-1) B--C
+        d6.push_back(3.76905);    // A^(-1) B--D
+        d6.push_back(2.7408);     // A^(-1) A--C
+        d6.push_back(3.90897);    // A^(-1) B--C
+        d6.push_back(3.63723);    // A^(-1) C--C
+        d6.push_back(3.87508);    // A^(-1) C--D
+        d6.push_back(3.51808);    // A^(-1) A--D
+        d6.push_back(3.76905);    // A^(-1) B--D
+        d6.push_back(3.87508);    // A^(-1) C--D
+        d6.push_back(3.34024);    // A^(-1) D--D
         // =====>> END SECTION DISPERSION <<=====
     } else {
         out_C6 = 0.0;
