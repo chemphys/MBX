@@ -199,6 +199,10 @@ size_t SetUpMonomers(std::vector<std::string> mon, std::vector<size_t> &sites, s
                        mon[i] == "k" || mon[i] == "rb" || mon[i] == "cs") {
                 sites.push_back(1);
                 nat.push_back(1);
+
+            } else if (mon[i] == "h2po4a") {
+                sites.push_back(7);
+                nat.push_back(7);
                 // END SECTION SITES
             } else {
                 // If monomer not found, throw exception
@@ -702,6 +706,32 @@ void GetExcluded(std::string mon, nlohmann::json mon_j, excluded_set_type &exc12
         // 14 distances
     }
 
+    if (mon == "h2po4a") {
+        // 12 distances
+        exc12.insert(std::make_pair(0, 1));
+        exc12.insert(std::make_pair(1, 2));
+        exc12.insert(std::make_pair(0, 6));
+        exc12.insert(std::make_pair(0, 5));
+        exc12.insert(std::make_pair(0, 3));
+        exc12.insert(std::make_pair(3, 4));
+        // 13 distances
+        exc13.insert(std::make_pair(1, 3));
+        exc13.insert(std::make_pair(5, 6));
+        exc13.insert(std::make_pair(1, 5));
+        exc13.insert(std::make_pair(1, 6));
+        exc13.insert(std::make_pair(3, 6));
+        exc13.insert(std::make_pair(0, 4));
+        exc13.insert(std::make_pair(0, 2));
+        exc13.insert(std::make_pair(3, 5));
+        // 14 distances
+        exc14.insert(std::make_pair(2, 6));
+        exc14.insert(std::make_pair(4, 6));
+        exc14.insert(std::make_pair(4, 5));
+        exc14.insert(std::make_pair(1, 4));
+        exc14.insert(std::make_pair(2, 5));
+        exc14.insert(std::make_pair(2, 3));
+        exc14.insert(std::make_pair(2, 4));
+    }
     // =====>> END SECTION EXCLUDED <<=====
 }
 
@@ -874,6 +904,16 @@ void SetCharges(std::vector<double> xyz, std::vector<double> &charges, std::stri
             charges[fst_ind + nv] = 0.0;
         }
 
+    } else if (mon_id == "h2po4a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            charges[fst_ind + nv * nsites + 0] = 0.4158 * CHARGECON;
+            charges[fst_ind + nv * nsites + 1] = -0.5026 * CHARGECON;
+            charges[fst_ind + nv * nsites + 2] = 0.3326 * CHARGECON;
+            charges[fst_ind + nv * nsites + 3] = -0.5026 * CHARGECON;
+            charges[fst_ind + nv * nsites + 4] = 0.3326 * CHARGECON;
+            charges[fst_ind + nv * nsites + 5] = -0.5379 * CHARGECON;
+            charges[fst_ind + nv * nsites + 6] = -0.5379 * CHARGECON;
+        }
         // END SECTION CHARGES
 
         // Note, for now, assuming only water has site dependant charges
@@ -1018,6 +1058,16 @@ void SetPolfac(std::vector<double> &polfac, std::string mon_id, size_t n_mon, si
             polfac[fst_ind + nv] = 0.20493754;
         }
 
+    } else if (mon_id == "h2po4a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            polfac[fst_ind + nv * nsites + 0] = 3.9682;
+            polfac[fst_ind + nv * nsites + 1] = 0.7385;
+            polfac[fst_ind + nv * nsites + 2] = 0.4417;
+            polfac[fst_ind + nv * nsites + 3] = 0.7385;
+            polfac[fst_ind + nv * nsites + 4] = 0.4417;
+            polfac[fst_ind + nv * nsites + 5] = 0.9076;
+            polfac[fst_ind + nv * nsites + 6] = 0.9076;
+        }
         // =====>> END SECTION POLFACS <<=====
 
     } else if (mon_id == "h2o") {
@@ -1121,6 +1171,16 @@ void SetPol(std::vector<double> &pol, std::string mon_id, size_t n_mon, size_t n
             pol[fst_ind + nv] = 0.20493754;
         }
 
+    } else if (mon_id == "h2po4a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            pol[fst_ind + nv * nsites + 0] = 3.9682;
+            pol[fst_ind + nv * nsites + 1] = 0.7385;
+            pol[fst_ind + nv * nsites + 2] = 0.4417;
+            pol[fst_ind + nv * nsites + 3] = 0.7385;
+            pol[fst_ind + nv * nsites + 4] = 0.4417;
+            pol[fst_ind + nv * nsites + 5] = 0.9076;
+            pol[fst_ind + nv * nsites + 6] = 0.9076;
+        }
         // =====>> END SECTION POLS <<=====
 
     } else if (mon_id == "h2o") {
@@ -1252,6 +1312,16 @@ void SetC6LongRange(std::vector<double> &c6_lr, std::string mon_id, size_t n_mon
     } else if (mon_id == "he") {
         for (size_t nv = 0; nv < n_mon; nv++) {
             c6_lr[fst_ind + nv] = 4.93437037524;
+        }
+    } else if (mon_id == "h2po4a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            c6_lr[nv * natoms + fst_ind] = 39.56997472832147;   // A
+            c6_lr[nv * natoms + fst_ind] = 13.509888970676258;  // B
+            c6_lr[nv * natoms + fst_ind] = 6.903064536856077;   // C
+            c6_lr[nv * natoms + fst_ind] = 13.509888970676258;  // B
+            c6_lr[nv * natoms + fst_ind] = 6.903064536856077;   // C
+            c6_lr[nv * natoms + fst_ind] = 15.946259749546286;  // D
+            c6_lr[nv * natoms + fst_ind] = 15.946259749546286;  // D
         }
         // END SECTION C6_LONG_RANGE
         // Water is the only monomer which C6 does not come from qchem.

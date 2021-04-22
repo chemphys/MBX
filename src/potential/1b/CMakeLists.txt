@@ -3,6 +3,9 @@ set(ONEB_SOURCES ps.cpp energy1b.cpp
                  poly_1b_A1B2_deg4_v1x.cpp x1b_A1B2_deg4_v1x.cpp
                  poly_1b_A1B4_deg5_exp0_v1.cpp poly_1b_A1B4_deg5_exp0_v1x.cpp
                  x1b_A1B4_deg5_exp0_v1x.cpp
+                 mbnrg_1b__o_A1_B1C1_B1C1_D2_c__deg3_v1.cpp
+                 poly_1b__o_A1_B1C1_B1C1_D2_c__deg3_nograd_v1.cpp
+                 poly_1b__o_A1_B1C1_B1C1_D2_c__deg3_grad_v1.cpp
 # END SECTION CMAKELISTS
 )
 
