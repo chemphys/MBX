@@ -791,6 +791,38 @@ bool GetC6(std::string mon_id1, std::string mon_id2, size_t index1, size_t index
         d6.push_back(3.76905);    // A^(-1) B--D
         d6.push_back(3.87508);    // A^(-1) C--D
         d6.push_back(3.34024);    // A^(-1) D--D
+    } else if (mon_id1 == "h2o" and mon_id2 == "h2po4a") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(1);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(3);
+        types2.push_back(3);
+
+        nt2 = 4;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        C6.push_back(460.0632);  // kcal/mol * A^(-6)  A--C
+        C6.push_back(183.3749);  // kcal/mol * A^(-6)  A--D
+        C6.push_back(90.6058);   // kcal/mol * A^(-6)  A--E
+        C6.push_back(216.5141);  // kcal/mol * A^(-6)  A--F
+        C6.push_back(226.6143);  // kcal/mol * A^(-6)  B--C
+        C6.push_back(81.5114);   // kcal/mol * A^(-6)  B--D
+        C6.push_back(42.1405);   // kcal/mol * A^(-6)  B--E
+        C6.push_back(96.021);    // kcal/mol * A^(-6)  B--F
+        d6.push_back(3.26198);   // A^(-1) A--C
+        d6.push_back(3.54178);   // A^(-1) A--D
+        d6.push_back(3.80497);   // A^(-1) A--E
+        d6.push_back(3.29315);   // A^(-1) A--F
+        d6.push_back(2.77144);   // A^(-1) B--C
+        d6.push_back(3.45407);   // A^(-1) B--D
+        d6.push_back(3.51353);   // A^(-1) B--E
+        d6.push_back(3.93437);   // A^(-1) B--F
         // =====>> END SECTION DISPERSION <<=====
     } else {
         out_C6 = 0.0;

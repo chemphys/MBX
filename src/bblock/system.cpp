@@ -57,6 +57,7 @@ namespace bblock {  // Building Block :: System
 ////////////////////////////////////////////////////////////////////////////////
 
 System::System() {
+    std::cout << std::setprecision(10) << std::scientific;
     initialized_ = false;
     monomer_json_read_ = false;
     mpi_initialized_ = false;

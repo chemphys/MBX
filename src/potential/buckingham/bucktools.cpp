@@ -516,6 +516,38 @@ bool GetBuckParams(std::string mon_id1, std::string mon_id2, size_t index1, size
         b.push_back(3.76905);   // A^(-1) B--D
         b.push_back(3.87508);   // A^(-1) C--D
         b.push_back(3.34024);   // A^(-1) D--D
+    } else if (mon_id1 == "h2o" and mon_id2 == "h2po4a") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(1);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(1);
+        types2.push_back(2);
+        types2.push_back(3);
+        types2.push_back(3);
+
+        nt2 = 4;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        a.push_back(7232.21);  // kcal/mol A--C
+        a.push_back(32558.1);  // kcal/mol A--D
+        a.push_back(3817.03);  // kcal/mol A--E
+        a.push_back(22345.8);  // kcal/mol A--F
+        a.push_back(3528.17);  // kcal/mol B--C
+        a.push_back(2381.05);  // kcal/mol B--D
+        a.push_back(623.729);  // kcal/mol B--E
+        a.push_back(3930.89);  // kcal/mol B--F
+        b.push_back(3.26198);  // A^(-1) A--C
+        b.push_back(3.54178);  // A^(-1) A--D
+        b.push_back(3.80497);  // A^(-1) A--E
+        b.push_back(3.29315);  // A^(-1) A--F
+        b.push_back(2.77144);  // A^(-1) B--C
+        b.push_back(3.45407);  // A^(-1) B--D
+        b.push_back(3.51353);  // A^(-1) B--E
+        b.push_back(3.93437);  // A^(-1) B--F
         // =====>> END SECTION BUCKINGHAM <<=====
     } else {
         out_a = 0.0;
