@@ -839,12 +839,23 @@ bool GetC6(std::string mon_id1, std::string mon_id2, size_t index1, size_t index
         // Fill in (in order) the C6 and d6 coefficients
         C6.push_back(626.9718);  // kcal/mol * A^(-6)  A--B
         C6.push_back(174.5561);  // kcal/mol * A^(-6)  A--C
-        C6.push_back(99.8379);  // kcal/mol * A^(-6)  A--D
+        C6.push_back(99.8379);   // kcal/mol * A^(-6)  A--D
         C6.push_back(204.1196);  // kcal/mol * A^(-6)  A--E
-        d6.push_back(2.38509);  // A^(-1) A--B
-        d6.push_back(4.03248);  // A^(-1) A--C
-        d6.push_back(4.62762);  // A^(-1) A--D
-        d6.push_back(4.34398);  // A^(-1) A--E
+        d6.push_back(2.38509);   // A^(-1) A--B
+        d6.push_back(4.03248);   // A^(-1) A--C
+        d6.push_back(4.62762);   // A^(-1) A--D
+        d6.push_back(4.34398);   // A^(-1) A--E
+    } else if (mon_id1 == "na" and mon_id2 == "na") {
+        types1.push_back(0);
+
+        types2.push_back(0);
+
+        nt2 = 1;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        C6.push_back(252.151);  // kcal/mol A--B
+        d6.push_back(4.4151);   // A^(-1) A--B
+
         // =====>> END SECTION DISPERSION <<=====
     } else {
         out_C6 = 0.0;
