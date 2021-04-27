@@ -548,6 +548,28 @@ bool GetBuckParams(std::string mon_id1, std::string mon_id2, size_t index1, size
         b.push_back(3.45407);  // A^(-1) B--D
         b.push_back(3.51353);  // A^(-1) B--E
         b.push_back(3.93437);  // A^(-1) B--F
+    } else if (mon_id1 == "h2po4a" and mon_id2 == "na") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(2);
+        types1.push_back(1);
+        types1.push_back(2);
+        types1.push_back(3);
+        types1.push_back(3);
+
+        types2.push_back(0);
+
+        nt2 = 4;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        a.push_back(11127.7);  // kcal/mol A--B
+        a.push_back(53422.3);  // kcal/mol A--C
+        a.push_back(21671.4);  // kcal/mol A--D
+        a.push_back(98651.3);  // kcal/mol A--E
+        b.push_back(2.38509);  // A^(-1) A--B
+        b.push_back(4.03248);  // A^(-1) A--C
+        b.push_back(4.62762);  // A^(-1) A--D
+        b.push_back(4.34398);  // A^(-1) A--E
         // =====>> END SECTION BUCKINGHAM <<=====
     } else {
         out_a = 0.0;
