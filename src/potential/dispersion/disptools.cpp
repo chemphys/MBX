@@ -629,6 +629,30 @@ bool GetC6(std::string mon_id1, std::string mon_id2, size_t index1, size_t index
         d6.push_back(3.45707);  // A^(-1)
         // =====>> BEGIN SECTION DISPERSION <<=====
         // ======>> PASTE CODE BELOW <<======
+    } else if (mon_id1 == "ano3" and mon_id2 == "h2o") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(1);
+        types1.push_back(1);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(1);
+
+        nt2 = 2;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        //
+        // 21428.2 2291.61 31822.5 2745.01
+        // 3.70817 3.52164 3.60491 3.4348
+        C6.push_back(190.48501174460543);  // kcal/mol * A^(-6)  A--C
+        C6.push_back(89.7859039733687);    // kcal/mol * A^(-6)  A--D
+        C6.push_back(231.30388470405538);  // kcal/mol * A^(-6)  B--C
+        C6.push_back(102.5684991625382);   // kcal/mol * A^(-6)  B--D
+        d6.push_back(3.708176);            // A^(-1) A--C
+        d6.push_back(3.521647);            // A^(-1) A--D
+        d6.push_back(3.60491);             // A^(-1) B--C
+        d6.push_back(3.4348);              // A^(-1) B--D
     } else if (mon_id1 == "co2" && mon_id2 == "co2") {
         // Define the type of atom in each mon
         types1.push_back(0);

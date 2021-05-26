@@ -172,6 +172,9 @@ size_t SetUpMonomers(std::vector<std::string> mon, std::vector<size_t> &sites, s
 
                 // =====>> BEGIN SECTION SITES <<=====
                 // ==> PASTE YOUR CODE BELOW <==
+            } else if (mon[i] == "ano3") {
+                sites.push_back(4);
+                nat.push_back(4);
 
             } else if (mon[i] == "ch4") {
                 sites.push_back(5);
@@ -689,6 +692,17 @@ void GetExcluded(std::string mon, nlohmann::json mon_j, excluded_set_type &exc12
 
     // =====>> BEGIN SECTION EXCLUDED <<=====
     // =====>> PASTE CODE BELOW <<=====
+    if (mon == "ano3") {
+        // 12 distances
+        exc12.insert(std::make_pair(0, 1));
+        exc12.insert(std::make_pair(0, 3));
+        exc12.insert(std::make_pair(0, 2));
+        // 13 distances
+        exc13.insert(std::make_pair(1, 2));
+        exc13.insert(std::make_pair(1, 3));
+        exc13.insert(std::make_pair(2, 3));
+        // 14 distances
+    }
 
     if (mon == "h4_dummy") {
         // 12 distances
@@ -839,6 +853,13 @@ void SetCharges(std::vector<double> xyz, std::vector<double> &charges, std::stri
 
         // =====>> BEGIN SECTION CHARGES <<=====
         // =======>> PASTE BELOW <<=======
+    } else if (mon_id == "ano3") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            charges[fst_ind + nv * nsites + 0] = 1.1018 * CHARGECON;
+            charges[fst_ind + nv * nsites + 1] = -0.7006 * CHARGECON;
+            charges[fst_ind + nv * nsites + 2] = -0.7006 * CHARGECON;
+            charges[fst_ind + nv * nsites + 3] = -0.7006 * CHARGECON;
+        }
     } else if (mon_id == "ch4") {
         for (size_t nv = 0; nv < n_mon; nv++) {
             charges[fst_ind + nv * nsites + 0] = -0.538573 * CHARGECON;
@@ -983,6 +1004,13 @@ void SetPolfac(std::vector<double> &polfac, std::string mon_id, size_t n_mon, si
 
         // =====>> BEGIN SECTION POLFACS <<=====
         // =======>> PASTE BELOW <<=======
+    } else if (mon_id == "ano3") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            polfac[fst_ind + nv * nsites + 0] = 1.1167;
+            polfac[fst_ind + nv * nsites + 1] = 0.9884;
+            polfac[fst_ind + nv * nsites + 2] = 0.9884;
+            polfac[fst_ind + nv * nsites + 3] = 0.9884;
+        }
     } else if (mon_id == "ch4") {
         for (size_t nv = 0; nv < n_mon; nv++) {
             polfac[fst_ind + nv * nsites + 0] = 1.3932677;
@@ -1087,6 +1115,13 @@ void SetPol(std::vector<double> &pol, std::string mon_id, size_t n_mon, size_t n
         // =====>> BEGIN SECTION POLS <<=====
         // =====>> PASTE  BELOW <<=====
 
+    } else if (mon_id == "ano3") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            pol[fst_ind + nv * nsites + 0] = 1.1167;
+            pol[fst_ind + nv * nsites + 1] = 0.9884;
+            pol[fst_ind + nv * nsites + 2] = 0.9884;
+            pol[fst_ind + nv * nsites + 3] = 0.9884;
+        }
     } else if (mon_id == "ch4") {
         for (size_t nv = 0; nv < n_mon; nv++) {
             pol[fst_ind + nv * nsites + 0] = 1.3932677;
@@ -1219,6 +1254,13 @@ void SetC6LongRange(std::vector<double> &c6_lr, std::string mon_id, size_t n_mon
         for (size_t nv = 0; nv < n_mon; nv++) c6_lr[fst_ind + nv] = 65.76255818916154320248;
         // BEGIN SECTION C6_LONG_RANGE
         // ==> PASTE YOUR CODE BELOW <==
+    } else if (mon_id == "ano3") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            c6_lr[nv * natoms + fst_ind] = 14.79799310717504;  // A
+            c6_lr[nv * natoms + fst_ind] = 17.06842406316412;  // B
+            c6_lr[nv * natoms + fst_ind] = 17.06842406316412;  // B
+            c6_lr[nv * natoms + fst_ind] = 17.06842406316412;  // B
+        }
     } else if (mon_id == "ch4") {
         for (size_t nv = 0; nv < n_mon; nv++) {
             c6_lr[nv * natoms + fst_ind] = 17.41398863;      // N
