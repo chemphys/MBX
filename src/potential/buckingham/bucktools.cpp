@@ -486,6 +486,27 @@ bool GetBuckParams(std::string mon_id1, std::string mon_id2, size_t index1, size
         b.push_back(2.89365);  // A^(-1) A--D
         b.push_back(2.82847);  // A^(-1) B--C
         b.push_back(3.82455);  // A^(-1) B--D
+    } else if (mon_id1 == "co3a" and mon_id2 == "h2o") {
+        types1.push_back(0);
+        types1.push_back(1);
+        types1.push_back(1);
+        types1.push_back(1);
+
+        types2.push_back(0);
+        types2.push_back(1);
+        types2.push_back(1);
+
+        nt2 = 2;
+
+        // Fill in (in order) the C6 and d6 coefficients
+        a.push_back(12831.3);  // kcal/mol A--C
+        a.push_back(949.547);  // kcal/mol B--C
+        a.push_back(7732.82);  // kcal/mol A--D
+        a.push_back(3561.96);  // kcal/mol B--D
+        b.push_back(3.75461);  // A^(-1) A--C
+        b.push_back(2.0592);   // A^(-1) B--C
+        b.push_back(2.81438);  // A^(-1) A--D
+        b.push_back(3.37392);  // A^(-1) B--D
         // =====>> END SECTION BUCKINGHAM <<=====
     } else {
         out_a = 0.0;

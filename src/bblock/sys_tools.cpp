@@ -203,6 +203,10 @@ size_t SetUpMonomers(std::vector<std::string> mon, std::vector<size_t> &sites, s
             } else if (mon[i] == "so4a") {
                 sites.push_back(5);
                 nat.push_back(5);
+
+            } else if (mon[i] == "co3a") {
+                sites.push_back(4);
+                nat.push_back(4);
                 // END SECTION SITES
             } else {
                 // If monomer not found, throw exception
@@ -721,6 +725,18 @@ void GetExcluded(std::string mon, nlohmann::json mon_j, excluded_set_type &exc12
         exc13.insert(std::make_pair(2, 4));
         // 14 distances
     }
+
+    if (mon == "co3a") {
+        // 12 distances
+        exc12.insert(std::make_pair(0, 1));
+        exc12.insert(std::make_pair(0, 3));
+        exc12.insert(std::make_pair(0, 2));
+        // 13 distances
+        exc13.insert(std::make_pair(1, 2));
+        exc13.insert(std::make_pair(1, 3));
+        exc13.insert(std::make_pair(2, 3));
+        // 14 distances
+    }
     // =====>> END SECTION EXCLUDED <<=====
 }
 
@@ -901,6 +917,14 @@ void SetCharges(std::vector<double> xyz, std::vector<double> &charges, std::stri
             charges[fst_ind + nv * nsites + 3] = -0.59806625 * CHARGECON;
             charges[fst_ind + nv * nsites + 4] = -0.59806625 * CHARGECON;
         }
+
+    } else if (mon_id == "co3a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            charges[fst_ind + nv * nsites + 0] = 0.0565 * CHARGECON;
+            charges[fst_ind + nv * nsites + 1] = -0.6855 * CHARGECON;
+            charges[fst_ind + nv * nsites + 2] = -0.6855 * CHARGECON;
+            charges[fst_ind + nv * nsites + 3] = -0.6855 * CHARGECON;
+        }
         // END SECTION CHARGES
 
         // Note, for now, assuming only water has site dependant charges
@@ -1053,6 +1077,14 @@ void SetPolfac(std::vector<double> &polfac, std::string mon_id, size_t n_mon, si
             polfac[fst_ind + nv * nsites + 3] = 1.1228;
             polfac[fst_ind + nv * nsites + 4] = 1.1228;
         }
+
+    } else if (mon_id == "co3a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            polfac[fst_ind + nv * nsites + 0] = 2.8749;
+            polfac[fst_ind + nv * nsites + 1] = 1.4785;
+            polfac[fst_ind + nv * nsites + 2] = 1.4785;
+            polfac[fst_ind + nv * nsites + 3] = 1.4785;
+        }
         // =====>> END SECTION POLFACS <<=====
 
     } else if (mon_id == "h2o") {
@@ -1163,6 +1195,14 @@ void SetPol(std::vector<double> &pol, std::string mon_id, size_t n_mon, size_t n
             pol[fst_ind + nv * nsites + 2] = 1.1228;
             pol[fst_ind + nv * nsites + 3] = 1.1228;
             pol[fst_ind + nv * nsites + 4] = 1.1228;
+        }
+
+    } else if (mon_id == "co3a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            pol[fst_ind + nv * nsites + 0] = 2.8749;
+            pol[fst_ind + nv * nsites + 1] = 1.4785;
+            pol[fst_ind + nv * nsites + 2] = 1.4785;
+            pol[fst_ind + nv * nsites + 3] = 1.4785;
         }
         // =====>> END SECTION POLS <<=====
 
@@ -1303,6 +1343,13 @@ void SetC6LongRange(std::vector<double> &c6_lr, std::string mon_id, size_t n_mon
             c6_lr[nv * natoms + fst_ind] = 18.604244139443022;  // B
             c6_lr[nv * natoms + fst_ind] = 18.604244139443022;  // B
             c6_lr[nv * natoms + fst_ind] = 18.604244139443022;  // B
+        }
+    } else if (mon_id == "co3a") {
+        for (size_t nv = 0; nv < n_mon; nv++) {
+            c6_lr[nv * natoms + fst_ind] = 29.870569127487343;  // A
+            c6_lr[nv * natoms + fst_ind] = 22.76466999541175;   // B
+            c6_lr[nv * natoms + fst_ind] = 22.76466999541175;   // B
+            c6_lr[nv * natoms + fst_ind] = 22.76466999541175;   // B
         }
         // END SECTION C6_LONG_RANGE
         // Water is the only monomer which C6 does not come from qchem.

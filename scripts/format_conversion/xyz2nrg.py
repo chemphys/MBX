@@ -8,6 +8,7 @@ monomers['nh3'] = ['N','H','H','H']
 monomers['ch4'] = ['C','H','H','H','H']
 monomers['pf6-'] = ['P','F','F','F','F','F','F']
 monomers['co2'] = ['C','O','O']
+monomers['co3a'] = ['C','O','O','O']
 monomers['so4a'] = ['S','O','O','O','O']
 monomers['li'] = ['Li']
 monomers['na'] = ['Na']
@@ -58,7 +59,7 @@ for i in monomers:
 # Start Checking for our monomers
 first_index = 0
 while True:
-    for i in range(minat,maxat+1):
+    for i in range(minat,maxat+1)[::-1]:
         my_ats = ats[first_index:first_index + i]
         my_mon = ""
         for j in monomers:
