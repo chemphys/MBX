@@ -66,6 +66,9 @@ double get_1b_energy(std::string mon1, size_t nm, std::vector<double> xyz1, std:
     } else if (mon1 == "co3a") {
         mbnrg_A1B3_deg5::mbnrg_A1B3_deg5_v1 pot(mon1);
         energies = pot.eval(xyz1.data(), nm);
+    } else if (mon1 == "no3a") {
+        mbnrg_A1B3_deg5::mbnrg_A1B3_deg5_v1 pot(mon1);
+        energies = pot.eval(xyz1.data(), nm);
         // =====>> END SECTION 1B_NO_GRADIENT <<=====
     } else {
         return 0.0;
@@ -132,6 +135,9 @@ double get_1b_energy(std::string mon1, size_t nm, std::vector<double> xyz1, std:
         mbnrg_A1B4_deg5::mbnrg_A1B4_deg5_v1 pot(mon1);
         energies = pot.eval(xyz1.data(), grad1.data(), nm, virial);
     } else if (mon1 == "co3a") {
+        mbnrg_A1B3_deg5::mbnrg_A1B3_deg5_v1 pot(mon1);
+        energies = pot.eval(xyz1.data(), grad1.data(), nm, virial);
+    } else if (mon1 == "no3a") {
         mbnrg_A1B3_deg5::mbnrg_A1B3_deg5_v1 pot(mon1);
         energies = pot.eval(xyz1.data(), grad1.data(), nm, virial);
         // =====>> END SECTION 1B_GRADIENT <<=====
