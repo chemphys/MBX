@@ -17,6 +17,7 @@ std::vector<double> GetMasses(std::vector<std::string> atoms) {
     m.insert(std::make_pair("Rb", 84.91149772));
     m.insert(std::make_pair("Cs", 132.905429));
     m.insert(std::make_pair("C", 12.00000000));
+    m.insert(std::make_pair("S", 31.9720711744));
     m.insert(std::make_pair("N", 14.00307400443));
 
     std::vector<double> masses(atoms.size(), 1.0);
