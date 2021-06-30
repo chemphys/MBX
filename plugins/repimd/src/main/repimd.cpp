@@ -779,6 +779,8 @@ std::string my_pimd::mass2name(double mass) {
         name = "Li";
     } else if (mass < 12.02) {
         name = "C";
+    } else if (mass < 14.02) {
+        name = "N";
     } else if (mass < 16.00) {
         name = "O";
     } else if (mass < 19.00) {

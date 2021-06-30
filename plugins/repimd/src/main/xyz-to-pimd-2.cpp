@@ -32,6 +32,7 @@ int main(int argc, char** argv) {
     mass_map_type mass_map;
 
     mass_map["H"] = 1.007825032;
+    mass_map["N"] = 14.00307400443;
     mass_map["D"] = 2.01410178;
     mass_map["O"] = 15.994914619;
     mass_map["F"] = 18.998403162;
